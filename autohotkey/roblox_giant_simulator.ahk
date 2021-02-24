@@ -1,6 +1,6 @@
 #IfWinActive Roblox 
 WaitClick() {
-    dur := 1000 * 30 
+    dur := 1000 * 20 
     strt := A_Tickcount
     while (A_Tickcount - strt<= dur){
         MouseMove, 175, 810 ; Move mouse to bottom left screen to continue afk clicking
@@ -61,7 +61,17 @@ SellPetsHelper(3)
 SellPetsHelper(4)
 return
 
-
+^F5:: ; Loop on upgrading skills 
+Loop {
+    dur := 1000 * 60 
+    strt := A_Tickcount
+    while (A_Tickcount - strt<= dur){
+        MouseMove, 175, 810 ; Move mouse to bottom left screen to continue afk clicking
+        Click, left
+    }
+    UpgradeSkills()
+}
+return
 
 #IfWinActive
 ^p::
@@ -213,15 +223,16 @@ MoveMouseBottomLeft() {
     MouseMove, 175, 810 ; Move mouse to bottom left screen to continue afk clicking
 }
 
-/* 
-DEPRECATED REBIRTHING DOESNT SCALE UP SOUL GEMS MULTIPLIER
-^F2:: ; Rebirth AFK
+
+/*
+; DEPRECATED REBIRTHING DOESNT SCALE UP SOUL GEMS MULTIPLIER
+^F5:: ; Rebirth AFK
 ; Determine Mouse position for the "Buy" button of buying weapons
 ; Make sure ur zoomed in and the cursor wont accept the accept arena match invite
 MouseGetPos, xP, yP
 Loop {
     strt := A_Tickcount
-    while (A_Tickcount - strt<= 9000) { ; Click until 100k gold
+    while (A_Tickcount - strt<= 2500) { ; Click until 100k gold
         MoveMouseBottomLeft()
         Click, left
     }
@@ -229,7 +240,7 @@ Loop {
     MouseMove, %xP%, %yP% ; Buy mainhand weapon
     Click, left
     strt := A_Tickcount
-    while (A_Tickcount - strt<= 7500){ ; Click while chest is opening
+    while (A_Tickcount - strt<= 4500){ ; Click while chest is opening
         MoveMouseBottomLeft()
         Click, left
     }
@@ -239,7 +250,7 @@ Loop {
     ClickFirstSlot()
     ClickEquipMainhand()
     ExitOutOfInventoryButton()
-
+    
     strt := A_Tickcount ; Wait for 100k gold
     while (A_Tickcount - strt<= 500){ 
         MoveMouseBottomLeft()
@@ -259,16 +270,18 @@ Loop {
     ClickSecondSlot() ; Retry if the new weapon was in the second slot
     ClickEquipOffhand()
 
-    strt := A_Tickcount
-    while (A_Tickcount - strt<= 500) { ; Click until available rebirth
-        MoveMouseBottomLeft()
+    ; strt := A_Tickcount
+    ; while (A_Tickcount - strt<= 500) { ; Click until available rebirth
+    ;     MoveMouseBottomLeft()
         Click, left
-    }
+    ; }
 
     RebirthCharacter()
 }
 return
-*/ 
+*/
+
+ 
 
 /* 
 DEPRECATED NOT NEEDED ANYMORE AS I GAIN GOLD FAST ENOUGH TO GET OP WEAPONS RIGHT FROM THE START
