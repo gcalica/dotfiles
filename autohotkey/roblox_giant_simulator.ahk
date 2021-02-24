@@ -1,6 +1,6 @@
 #IfWinActive Roblox 
 WaitClick() {
-    dur := 1000 * 60 
+    dur := 1000 * 30 
     strt := A_Tickcount
     while (A_Tickcount - strt<= dur){
         MouseMove, 175, 810 ; Move mouse to bottom left screen to continue afk clicking
@@ -13,32 +13,28 @@ WaitClick() {
 ; always check to make sure that the slot being upgraded half as twice is the winterblade
 Loop {
     ClickInventoryButton()
-
-    /*
-    SellChests()
+; /*
+    ; SellChests()
     ClickWeaponsTab()
     ClickSecondSlot() 
-    ClickUpgradeButton(3) 
-    */
+    ClickUpgradeButton(4) 
 
     WaitClick()
-
-    SellChests()
+; */
+    ; SellChests()
     ClickWeaponsTab()
     ClickFirstSlot()
-    ClickUpgradeButton(6)
+    ClickUpgradeButton(4)
 
     WaitClick()
-
-    /*
-    SellChests()
+; /*
+    ; SellChests()
     ClickSkinsTab() 
     ClickFirstSlot() 
-    ClickUpgradeButton(6)
-    */
+    ClickUpgradeButton(4)
 
     WaitClick()
-
+; */
     ExitOutOfInventoryButton()
     UpgradeSkills()
 }
@@ -55,6 +51,10 @@ Loop {
     WinActivate, ahk_exe ApplicationFrameHost.exe ; Opens the Roblox player from Windows
     AcceptArenaInvite()
 }
+return
+
+^F4:: ; Select all pets
+
 return
 
 
@@ -93,12 +93,12 @@ ClickSellButton() {
 }
 
 ClickFirstSlot() {
-    MouseMove, 925, 320
+    MouseMove, 925, 275
     Click, left
 }
 
 ClickSecondSlot() {
-    MouseMove, 1050, 320
+    MouseMove, 1050, 275
     Click, left
 }
 
