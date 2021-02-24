@@ -54,7 +54,11 @@ Loop {
 return
 
 ^F4:: ; Select all pets
-
+; This assumes that you have 4 rows somewhat cenetered around the window
+SellPetsHelper(1)
+SellPetsHelper(2)
+SellPetsHelper(3)
+SellPetsHelper(4)
 return
 
 
@@ -64,6 +68,18 @@ return
 Pause, Toggle, 1
 Reload
 return
+
+SellPetsHelper(row) {
+    leftY := 300
+    leftX := 800
+    offset := 115
+    Loop, 4 {
+        xCoord := ((A_index - 1) * offset) + leftX
+        yCoord := ((row - 1) * offset) + leftY
+        MouseMove, %xCoord%, %yCoord%
+        Click, left
+    }
+}
 
 AcceptArenaInvite() {
     MouseMove, 875, 270
